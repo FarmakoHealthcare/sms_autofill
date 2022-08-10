@@ -20,7 +20,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String _code="";
+  String _code = "";
   String signature = "{{ app signature }}";
 
   @override
@@ -49,12 +49,15 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              PhoneFieldHint(),
+              PhoneFieldHint(
+                style: TextStyle(color: Colors.red),
+              ),
               Spacer(),
               PinFieldAutoFill(
                 decoration: UnderlineDecoration(
                   textStyle: TextStyle(fontSize: 20, color: Colors.black),
-                  colorBuilder: FixedColorBuilder(Colors.black.withOpacity(0.3)),
+                  colorBuilder:
+                      FixedColorBuilder(Colors.black.withOpacity(0.3)),
                 ),
                 currentCode: _code,
                 onCodeSubmitted: (code) {},
@@ -97,7 +100,8 @@ class _HomePageState extends State<HomePage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (_) => CodeAutoFillTestPage()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => CodeAutoFillTestPage()));
                 },
                 child: Text("Test CodeAutoFill mixin"),
               )
@@ -114,7 +118,8 @@ class CodeAutoFillTestPage extends StatefulWidget {
   _CodeAutoFillTestPageState createState() => _CodeAutoFillTestPageState();
 }
 
-class _CodeAutoFillTestPageState extends State<CodeAutoFillTestPage> with CodeAutoFill {
+class _CodeAutoFillTestPageState extends State<CodeAutoFillTestPage>
+    with CodeAutoFill {
   String? appSignature;
   String? otpCode;
 
